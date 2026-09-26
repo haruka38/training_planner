@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_26_071611) do
+ActiveRecord::Schema[7.2].define(version: 2026_09_26_072408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_26_071611) do
     t.date "competition_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "off_weekday_1"
+    t.integer "off_weekday_2"
   end
 
   create_table "posts", force: :cascade do |t|

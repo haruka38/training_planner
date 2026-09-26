@@ -1,0 +1,53 @@
+<%= form_with(model: competition) do |form| %>
+  <% if competition.errors.any? %>
+    <div>
+      <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+
+      <ul>
+        <% competition.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "試合名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :competition_date, "試合日" %>
+    <%= form.date_field :competition_date %>
+  </div>
+
+  <div>
+    <%= form.label :off_weekday_1, "OFF曜日①" %>
+    <%= form.select :off_weekday_1, {
+      "日曜日" => 0,
+      "月曜日" => 1,
+      "火曜日" => 2,
+      "水曜日" => 3,
+      "木曜日" => 4,
+      "金曜日" => 5,
+      "土曜日" => 6
+    } %>
+  </div>
+
+  <div>
+    <%= form.label :off_weekday_2, "OFF曜日②" %>
+    <%= form.select :off_weekday_2, {
+      "日曜日" => 0,
+      "月曜日" => 1,
+      "火曜日" => 2,
+      "水曜日" => 3,
+      "木曜日" => 4,
+      "金曜日" => 5,
+      "土曜日" => 6
+    } %>
+  </div>
+
+  <div>
+    <%= form.submit "登録する" %>
+  </div>
+<% end %>
