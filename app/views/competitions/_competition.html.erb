@@ -19,3 +19,9 @@
     <%= competition.off_weekday_2_name %>
   </div>
 </div>
+
+<div>
+    <%= button_to "スケジュールを作成",
+        generate_schedule_path(competition),
+        method: :post %>
+</div>

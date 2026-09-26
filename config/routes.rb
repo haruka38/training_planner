@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :competitions
+
+  resources :competitions do
+    resources :training_schedules, only: [:index]
+  end
+  post "competitions/:id/generate_schedule", to: "competitions#generate_schedule", as: :generate_schedule
   resources :posts
   root 'posts#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,31 @@
+<% content_for :title, "Training Schedule" %>
+
+<div class="w-full">
+  <h1 class="font-bold text-4xl mb-5">
+    <%= @competition.name %>
+  </h1>
+
+  <p class="mb-5">
+    試合日：<%= @competition.competition_date %>
+  </p>
+
+  <div class="space-y-4">
+    <% @training_schedules.each do |schedule| %>
+      <div class="border rounded-md p-4">
+        <p class="font-bold">
+          <%= schedule.scheduled_date %>
+        </p>
+
+        <% if schedule.competition_day? %>
+          <p>🏆 試合日</p>
+        <% elsif schedule.off_day %>
+          <p>OFF</p>
+        <% else %>
+          <% schedule.trainings.each do |training| %>
+          <p><%= training.name %></p>
+        <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -18,4 +18,17 @@ class Competition < ApplicationRecord
   def off_weekday_2_name
     WEEKDAYS[off_weekday_2]
   end
+
+  def generate_training_schedules
+    start_date = competition_date - 14.days
+    (start_date..competition_date).each do |date|
+      off_day =
+        date.wday == off_weekday_1 ||
+        date.wday == off_weekday_2
+      training_schedules.create!(
+        scheduled_date: date,
+        off_day: off_day
+      )
+    end
+  end
 end

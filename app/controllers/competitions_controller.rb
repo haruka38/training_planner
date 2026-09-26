@@ -1,5 +1,5 @@
 class CompetitionsController < ApplicationController
-  before_action :set_competition, only: %i[ show edit update destroy ]
+  before_action :set_competition, only: %i[ show edit update destroy generate_schedule ]
 
   # GET /competitions or /competitions.json
   def index
@@ -55,6 +55,12 @@ class CompetitionsController < ApplicationController
       format.html { redirect_to competitions_path, notice: "Competition was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def generate_schedule
+    @competition = Competition.find(params[:id])
+    @competition.generate_training_schedules
+    redirect_to @competition, notice: "トレーニングスケジュールを作成しました。"
   end
 
   private
