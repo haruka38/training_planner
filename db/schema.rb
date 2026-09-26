@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_26_061120) do
+ActiveRecord::Schema[7.2].define(version: 2026_09_26_071611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.date "competition_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "training_schedules", force: :cascade do |t|
+    t.bigint "competition_id", null: false
+    t.date "scheduled_date"
+    t.boolean "off_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_training_schedules_on_competition_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.bigint "training_schedule_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_schedule_id"], name: "index_trainings_on_training_schedule_id"
+  end
+
+  add_foreign_key "training_schedules", "competitions"
+  add_foreign_key "trainings", "training_schedules"
 end

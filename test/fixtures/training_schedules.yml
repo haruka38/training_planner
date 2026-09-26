@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition: one
+  scheduled_date: 2026-09-26
+  off_day: false
+
+two:
+  competition: two
+  scheduled_date: 2026-09-26
+  off_day: false

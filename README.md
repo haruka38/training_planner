@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+postgresql://training_planner_db_2jop_user:VMAZcLwZdE64B9bKDuQujfZ2h394mYJx@dpg-darmkmrncjis73e8vmf0-a/training_planner_db_2jop
