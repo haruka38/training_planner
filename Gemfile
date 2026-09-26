@@ -59,4 +59,4 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 4.6"
-gem "json", "~> 2.7"
+gem "json", "~> 3.0"
